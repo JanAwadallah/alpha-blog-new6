@@ -19,13 +19,15 @@ h1{
 #home-jumbo {
     height: 80vh;
     background-image: url("https://images.squarespace-cdn.com/content/v1/5ac45be65417fceae0c04c2f/1523160991946-QTWT54B9R9H3DCIQE34Y/ke17ZwdGBToddI8pDm48kKiIClVqNxgE6d35F09KPGFZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIbFrlhk4y2iM1Cqx9bL_WQxvvOcnOZ-D29OMd2rBylAMKMshLAGzx4R3EDFOm1kBS/typewriter-banner.jpg");
+    box-shadow: 50px 50px 100px 0 lightgray inset, -50px -50px 100px 0 lightgray inset;
+    border-radius: 15px;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right ;
     margin-left: auto;
     margin-right: auto;
-    font-size: 2rem;
+    font-size: 2em;
 
 }
 #home-container{
