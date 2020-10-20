@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>AlphaBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +11,8 @@
   </head>
 
   <body>
+  <%= render 'pages/heading' %>
+
     <% flash.each do |name, msg| %>
       <%= msg %>
     <% end %>

@@ -1,0 +1,38 @@
+@import 'bootstrap/dist/css/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@700&display=swap');
+
+h1{
+    color: white;
+    // font-weight: 700 !important;
+    font-family: 'Lemonada', cursive ;
+}
+.navbar{
+    // margin: 2rem;
+    // background-color: #fcfbf2 !important;
+}
+
+.navbar-brand {
+    // color:  blue !important;
+    font-weight: 500;
+}
+
+#home-jumbo {
+    height: 100%;
+    background-image: url("https://images.squarespace-cdn.com/content/v1/5ac45be65417fceae0c04c2f/1523160991946-QTWT54B9R9H3DCIQE34Y/ke17ZwdGBToddI8pDm48kKiIClVqNxgE6d35F09KPGFZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIbFrlhk4y2iM1Cqx9bL_WQxvvOcnOZ-D29OMd2rBylAMKMshLAGzx4R3EDFOm1kBS/typewriter-banner.jpg");
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#home-container{
+    margin-top: 25px;
+    max-width: 80%;
+    height: 800px;
+}
+
+.title{
+    margin-bottom: 5em;
+}
