@@ -1,0 +1,30 @@
+<div class="container">
+
+
+<div class="row justify-content-center mb-4">
+<div  class="col-10">
+<%= render "shared/errors" %>
+<%= form_with(model: @article, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded") do |f| %>
+    <div class="form-group row ">
+        <%= f.label :title, class: "col-2 col-form-label text-light" %><br>
+        <div class="col-10">
+            <%= f.text_field :title, placeholder: "Article tiltle", class: "form-control shadow-lg rounded" %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label :description, class: "col-2 col-form-label text-light" %><br>
+        <div class="col-10">
+            <%= f.text_area :description, rows: 10, placeholder: "Article text", class: "form-control shadow-lg rounded" %>
+        </div>
+    </div>     
+   
+    <div class="form-group row d-flex justify-content-center">
+        <%= f.submit class: "btn btn-outline-light btn-lg" %>
+    </div>
+
+<% end %>
+</div>
+</div>
+<center><p> <%= link_to "[ Return to Articles' list without saving ]", articles_path, class: "text-info" %> </p></center>
+
+</div>

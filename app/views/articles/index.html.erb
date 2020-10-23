@@ -2,10 +2,10 @@
 <div class="wrap">
   <button id="add-btn" class="button"><%= link_to "Add New", new_article_path, class: "noDecoration" %></button>
 </div>
-<div id="page-content">
+
   <center><h1 class="mt-4">Articles List</h1></center>
   <% @articles.each do |article|%>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center ml-10">
       <div class="col-6 mt-4">
         <div class="card text-center shadow-lg mb-5 bg-white rounded">
           <div class="card-header font-italic">
@@ -27,5 +27,5 @@
     </div>
     
   <% end %>
-</div>
+
 </div>
