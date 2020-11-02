@@ -10,4 +10,9 @@ class User < ApplicationRecord
                       length: {maximum: 105},
                       format: { with: VALID_EMAIL_REGEX }
     has_secure_password
+    def self.search_by(search_term)
+        where("LOWER(username) LIKE :search_term OR LOWER(email) LIKE :search_term ",
+         search_term: "%#{search_term.downcase}%")
+    end
+
 end
