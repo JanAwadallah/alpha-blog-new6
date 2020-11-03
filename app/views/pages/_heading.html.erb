@@ -25,7 +25,17 @@
 
         <div class="navbar-nav">
         <% if logged_in? %>
-        <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= "(Admin)" if current_user.admin? %> <%= current_user.username %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+        <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Delete your profile", user_path(current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "dropdown-item text-danger" %>
+          </div>
+      </li>
         <%= link_to "Log out", logout_path, class: "nav-link", method: :delete %>
         <% else %>
         <%= link_to "Log in", login_path, class: "nav-link"%>

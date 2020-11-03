@@ -6,4 +6,5 @@ class Article < ApplicationRecord
         where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",
          search_term: "%#{search_term.downcase}%")
     end
+    
 end

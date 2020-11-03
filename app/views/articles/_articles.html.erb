@@ -1,17 +1,28 @@
     <div class="container">
-
-        
-<%= form_with(model: @article, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded", method: "get") do %>
+<% if @user %>
+<% if @user.articles.count > 0 %>  
+    <%= form_with(model: @article, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded text-center", method: "get") do %>
+        <%= label_tag(:search, "Search for:") %>
+        <%= text_field_tag :search, @search_term,placeholder: "Article" %>
+        <%= label_tag(:order, "Sort by:", class: "ml-5") %>
+        <%= select_tag(:order, options_for_select([['SORT', "0"], ['Newest first', "1"], ['Oldest first', "2"]])) %>
+        <%= submit_tag("Search") %> 
+    <% end %>
+<% end %>
+<% else %>
+<%= form_with(model: @article, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded text-center", method: "get") do %>
     <%= label_tag(:search, "Search for:") %>
     <%= text_field_tag :search, @search_term,placeholder: "Article" %>
+   
+    <%= label_tag(:order, "Sort by:", class: "ml-5") %>
+    <%= select_tag(:order, options_for_select([['SORT', "0"], ['Newest first', "1"], ['Oldest first', "2"]])) %>
     <%= submit_tag("Search") %> 
- <% end %>
+<% end %>
+<% end %>
 
-
-    </div>
     <% @articles.each do |article|%>
         <div class="row justify-content-center">
-        <div class="col-6 mt-4">
+        <div class="col-md-8 mt-4">
             <div class="card text-center shadow-lg mb-5 bg-white rounded">
             <div class="card-header font-italic">
             <% if article.user %>
@@ -22,8 +33,10 @@
                 <h5 class="card-title"> <%= link_to article.title, article_path(article), class: "text-success" %></h5>
                 <p class="card-text"><%= truncate(article.description, length: 50) %></p>
                 <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
-                <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>            
+                <% if logged_in? && (article.user === current_user || current_user.admin?)%>
+                    <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+                    <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>            
+                <% end %>
             </div>
             <div class="card-footer text-muted">
                 <small> Created <%= time_ago_in_words(article.created_at) %> ago , 
@@ -34,3 +47,4 @@
         </div>
         
     <% end %>
+</div>

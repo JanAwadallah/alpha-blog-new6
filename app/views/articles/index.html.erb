@@ -1,7 +1,9 @@
 <div class="workspace">
-<div class="wrap">
-  <button id="add-btn" class="button"><%= link_to "Add New", new_article_path, class: "noDecoration" %></button>
-</div>
+<% if logged_in? %>
+  <div class="wrap">
+    <button id="add-btn" class="button"><%= link_to "Add New", new_article_path, class: "noDecoration" %></button>
+  </div>
+<% end %>
 
   <center><h1 class="mt-4">Articles List</h1></center>
   <div class="flickr_pagination mb-4">
