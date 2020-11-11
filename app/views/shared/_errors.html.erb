@@ -1,7 +1,7 @@
 <% if obj.errors.any? %>
 
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-<h2>New <%= obj.class.name.downcase %> can not be saved!</h2>
+<h2 class="alert-heading">New <%= obj.class.name.downcase %> can not be saved!</h2>
 <ul>
 <% obj.errors.full_messages.each do |msg| %>
     <li  class="float-left"><%= msg %></li><br>

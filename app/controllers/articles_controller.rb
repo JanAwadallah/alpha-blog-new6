@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
     before_action :require_same_user, only: [:edit, :update, :destroy]
     def show
         
+        
     end
     def index
         
@@ -14,10 +15,14 @@ class ArticlesController < ApplicationController
             @articles = @articles.search_by(@search_term)
             
         end
-        if params[:order]=== "1"
+        if params[:order]
+            @ordered = params[:order].to_i
+        
+            if @ordered  === 1
              @articles = @articles.order(created_at: :desc)
             else 
                 @articles = @articles.order(created_at: :ASC)
+            end
 
         end
       
@@ -29,8 +34,7 @@ class ArticlesController < ApplicationController
         
     end
     def create 
-   
-        @article = Article.new(params.require(:article).permit(:title, :description))
+        @article = Article.new(article_params)
      
         @article.user = current_user
 
@@ -42,7 +46,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        if @article.update(params.require(:article).permit(:title, :description))
+        if @article.update(article_params)
             redirect_to article_path(@article), success: "Article was updated successfully."
         else
             render 'edit'
@@ -57,6 +61,10 @@ class ArticlesController < ApplicationController
 
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def article_params
+        params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     def require_same_user

@@ -1,0 +1,51 @@
+<div class="workspace">
+<% if logged_in? && current_user.admin? %>
+  <div class="wrap">
+    <button id="add-btn" class="button"><%= link_to "Add New", new_category_path, class: "noDecoration" %></button>
+  </div>
+<% end %>
+
+  <center><h1 class="mt-4">Categories List</h1></center>
+  <div class="flickr_pagination mb-4">
+    
+    <%= will_paginate @categories, :container => false %>
+  </div>
+  <div class="row justify-content-center">
+  <div class="col-md-4 mt-4">
+      <table class="table">
+          <thead class="thead-dark">
+               <tr class="text-center">
+                  <th scope="col">Category name</th>
+                  <th scope="col">No. of Articles</th>
+                  <% if logged_in? && current_user.admin?%>
+                  <th scope="col">Action</th>
+                  <% end %>
+              </tr>
+          </thead>
+          <% n=1 %>
+<% @categories.each do |category|%>
+       
+                <tbody>
+                    <tr class="text-center">
+                        <td><h3><%= link_to category.name, category_path(category) %></h3></td>
+                        <td><p class="card-text"><%= pluralize(category.articles.count, "article") %></p></td>
+                        <td role="group">
+                        <% if logged_in? && current_user.admin?%>
+                        <%= link_to "Edit", edit_category_path(category), class: "btn btn-info" %>
+                        <%= link_to "Delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>
+                        <% end %>
+                        </td>
+                        </tr>
+                        </tbody>
+                <% end %>  
+                
+            </table>
+        </div>
+    </div>
+ 
+ <div class="flickr_pagination mb-4">
+    
+    <%= will_paginate @categories, :container => false %>
+  </div>
+
+</div>

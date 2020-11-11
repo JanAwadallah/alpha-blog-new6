@@ -1,2 +1,44 @@
 <center><h1 class="mt-4 mb-4">Update user details</h1></center>
-    <%= render 'form' %>
+<div class="container">
+
+<div class="row justify-content-center mb-4">
+<div  class="col-10">
+<%= render "shared/errors", obj: @user %>
+
+<%= form_with(model: @user, local: true, class: "shadow-lg p-3 mb-3 bg-info rounded") do |f| %>
+    <div class="form-group row ">
+        <%= f.label :username, class: "col-2 col-form-label text-light" %><br>
+        <div class="col-10">
+            <%= f.text_field :username, placeholder: "User Name", class: "form-control shadow-lg rounded" %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label :email, class: "col-2 col-form-label text-light" %><br>
+        <div class="col-10">
+            <%= f.email_field :email, placeholder: "Email Address", class: "form-control shadow-lg rounded" %>
+        </div>
+    </div>  
+    <div class="form-group row">
+        <%= f.label :password, class: "col-2 col-form-label text-light" %><br>
+        <div class="col-10">
+         <%= f.password_field :password, placeholder: "Password", class: "form-control shadow-lg rounded" %>
+        </div>
+    </div>
+    <div class="form-group row">
+    <%= f.label :admin, class: "col-2 col-form-label text-light" %><br>
+    <div class="col-10">
+    <%= f.text_field :admin, placeholder: "Admin", class: "form-control shadow-lg rounded" %>
+
+    </div>
+</div>     
+   
+    <div class="form-group row d-flex justify-content-center">
+        <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>
+    </div>
+
+<% end %>
+</div>
+</div>
+<center><p> <%= link_to "[ Alpha-Blog Home ]", root_path, class: "text-info" %> </p></center>
+
+</div>

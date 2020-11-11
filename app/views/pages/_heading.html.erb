@@ -1,6 +1,6 @@
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <%= link_to "Alpha Blog", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,8 +8,30 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Articles", articles_path, class: "nav-link"%>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Articles
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <%= link_to "Articles' List", articles_path, class: "dropdown-item"%>
+
+            <% if logged_in? %>
+              <%= link_to "Create new article", new_article_path, class: "dropdown-item"%>
+            <% end %>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <%= link_to "Categories' List", categories_path, class: "dropdown-item"%>
+
+            <% if logged_in? && current_user.admin? %>
+              <%= link_to "Create new category", new_category_path, class: "dropdown-item"%>
+            <% end %>
+          </div>
         </li>
 
         <li class="nav-item">
